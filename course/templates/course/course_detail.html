@@ -1,0 +1,78 @@
+{% extends "base/base.html" %}
+
+{% load bootstrap3 %}
+{% load gravatar %}
+{% load recaptcha2 %}
+
+{% block title %}{{ course.name }} - 課程評價{% endblock %}
+
+{% block content %}
+  <div class="well infobox">
+    <div class="row">
+      <div class="col-md-9">
+        <h2>{{ course.name }}</h2>
+        <p>{{ course.department }}  {{ course.course_num }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-9">
+        <h4><i class="fa fa-info-circle fa-fw fa-inverse"></i>授課年度</h4>
+        <p style="margin-left: 22px;">{{ course.year }} 學年度 第 {{ course.semester }} 學期</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-9">
+        <h4><i class="fa fa-user fa-fw fa-inverse"></i>授課教師</h4>
+        <p style="margin-left: 22px;">
+          {% for teacher in teachers %}
+            {{ teacher }} /
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="well infobox">
+    <h1>comment: </h1>
+    {% for comment in comments %}
+    <div class="well infobox">
+      {% gravatar comment.email 64 '' 'pull-left comment-img' %}
+      <div class="pull-right">{{ comment.created_date | date:"Y/m/d H:i:s" }}</div>
+      <article class="comment-inner">
+        <header class="comment-header">{{ comment.name }} 說：</header>
+        <section>
+          {{ comment.text }}
+        </section>
+      </article>
+    </div>
+    {% endfor %}
+    <form action="{% url 'post_comment' course.course_num %}" method="post" class="comment-form well infobox">
+      {% csrf_token %}
+      <div class="form">
+        <div class="form-group label-static">
+          <label for="{{ form.name.id_for_label }}">姓名：</label>
+          {{ form.name }}
+          {{ form.name.errors }}
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-group label-static">
+          <label for="{{ form.email.id_for_label }}">Email：</label>
+          {{ form.email }}
+          {{ form.email.errors }}
+        </div>
+      </div>
+      <div class="form">
+        <div class="form-group label-static">
+          <label for="{{ form.text.id_for_label }}">留言：</label>
+          {{ form.text }}
+          {{ form.text.errors }}
+        </div>
+      </div>
+      {{form.captcha}}
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+{% endblock %}

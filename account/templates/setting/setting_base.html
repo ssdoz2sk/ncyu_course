@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load setting_extra %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'setting/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+  {% if alert_message %}
+  <div class="alert alert-info alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>{{ alert_message }}</strong>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div class="col-md-3" role="navigation">
+      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+        <li class="{% is_active request 'profile' %}"><a href="{% url 'profile' %}">Profile</a></li>
+        <li class="{% is_active request 'account' %}"><a href="{% url 'account' %}">帳號</a></li>
+        <li class="disabled"><a href="javascript:void(0)">Email</a></li>
+        <li class="disabled"><a href="javascript:void(0)">通知</a></li>
+        <li class="disabled"><a href="javascript:void(0)">安全</a></li>
+      </ul>
+    </div>
+
+    {% block setting_content %}
+  </div>
+  {% endblock %}
+{% endblock %}
