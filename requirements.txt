@@ -12,6 +12,8 @@ Django==2.0.2
 django-bootstrap3==9.1.0
 django-celery-beat==1.1.1
 django-celery-results==1.0.1
+django-gravatar2==1.4.2
+django-recaptcha2==1.0.3
 html5lib==1.0.1
 idna==2.6
 kombu==4.1.0
