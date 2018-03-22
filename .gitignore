@@ -100,5 +100,7 @@ ENV/
 # mypy
 .mypy_cache/
 
+# #############################
 .idea/
+static/
 ncyu_course/settings.py

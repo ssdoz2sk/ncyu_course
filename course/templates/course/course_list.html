@@ -29,7 +29,7 @@
           {% for course in courses %}
             <tr>
               <td>{{ course.department }}</td>
-              <td>{{ course.course_num }}</td>
+              <td><a href="{% url 'course_detail' course.course_num %}">{{ course.course_num }}</a></td>
               <td>{{ course.name }}</td>
               <td>{{ course.teacher_name }}</td>
             </tr>

@@ -36,9 +36,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">全校課程</a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'landingPage' %}">全校課程</a></li>
-                <li><a href="{% url 'landingPage' %}">心得</a></li>
-                <li><a href="{% url 'landingPage' %}">考古題</a></li>
+                <li><a href="{% url 'course_search' %}">全校課程</a></li>
+                <!--<li><a href="{% url 'landingPage' %}" class="disabled">心得</a></li>-->
+                <!--<li><a href="{% url 'landingPage' %}" class="disabled">考古題</a></li>-->
               </ul>
             </li>
           </ul>
@@ -67,8 +67,8 @@
             </li>
             {% else %}
             <li><a href="{% url 'login' %}">登入</a></li>
-            <p class="navbar-text">or</p>
-            <li><a href="{% url 'register' %}">註冊</a></li>
+            <!--<p class="navbar-text">or</p>-->
+            <!--<li><a href="{% url 'register' %}">註冊</a></li>-->
             {% endif %}
           </ul>
         </div>
