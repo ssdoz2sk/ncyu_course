@@ -35,6 +35,13 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Passwords don\'t match.')
         return cd['password2']
 
+    def clean_email(self):
+        cd = self.cleaned_data
+        if cd['email'].endswith('@alumni.ncyu.edu.tw') or \
+           cd['email'].endswith('@mail.ncyu.edu.tw'):
+            return cd['email']
+        raise forms.ValidationError('Email 必須使用 嘉義大學的Email 註冊')
+
 
 class UserProfileForm(forms.ModelForm):
     url = forms.URLField(required=False)

@@ -1,18 +1,25 @@
 {% extends "base/base.html" %}
-
+{% load static %}
 {% block title %}{% endblock %}
 
-{% block content %}
-  <div class="alert alert-dismissible alert-warning">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <h4>Warning!</h4>
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'landing/style.css' %}" />
+{% endblock %}
 
-    <p>功能測試中，目前註冊不開放，但還是可以評論</p>
+{% block content %}
+  {% if message %}
+  <div class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>Info!</h4>
+
+    <p>{{ message }}</p>
   </div>
-  <div class="well infobox">
+  {% endif %}
+  <div class="cover">
+    <div class="cover-image"></div>
     <div class="row">
       <div class="col-md-12">
-        <p></p>
+        <p>OAO//</p>
       </div>
     </div>
   </div>

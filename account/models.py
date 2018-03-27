@@ -11,6 +11,7 @@ class CourseUser(AbstractUser):
     department = models.CharField(max_length=50, blank=True, null=True)
 
     is_ban = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
     ban_type = models.IntegerField(default=0)
     ban_until = models.DateTimeField(blank=True, null=True)

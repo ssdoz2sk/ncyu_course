@@ -10,7 +10,7 @@
     {% bootstrap_javascript %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/js/ripples.js"></script>
-
+    <script>$.material.init()</script>
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.10/css/bootstrap-material-design.min.css" />
@@ -67,8 +67,8 @@
             </li>
             {% else %}
             <li><a href="{% url 'login' %}">登入</a></li>
-            <!--<p class="navbar-text">or</p>-->
-            <!--<li><a href="{% url 'register' %}">註冊</a></li>-->
+            <p class="navbar-text">or</p>
+            <li><a href="{% url 'register' %}">註冊</a></li>
             {% endif %}
           </ul>
         </div>
