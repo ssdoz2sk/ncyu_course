@@ -14,8 +14,6 @@ class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label='重複密碼',
                                 widget=forms.PasswordInput)
 
-    email = forms.EmailField()
-
     class Meta:
         model = CourseUser
         fields = ['username', 'first_name', 'email']
@@ -40,7 +38,7 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['email'].endswith('@alumni.ncyu.edu.tw') or \
            cd['email'].endswith('@mail.ncyu.edu.tw'):
             return cd['email']
-        raise forms.ValidationError('Email 必須使用 嘉義大學的Email 註冊')
+        raise forms.ValidationError('必要的，請填寫學校的Email，要認證用的喔。')
 
 
 class UserProfileForm(forms.ModelForm):
